@@ -1,14 +1,20 @@
 using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private GameObject currObject = null;
 
-    private void Awake()
+    public static event Action MainMenu;
+    public static event Action InventoryMenu;
+    public static event Action EditMenu;
+
+    private void Start()
     {
+        OnMainMenu();
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -20,6 +26,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnMainMenu()
+    {
+        MainMenu?.Invoke();
+        Debug.Log(" llama MainMenu");
+    }
+    public void OnInventory()
+    {
+        MainMenu?.Invoke();
+        Debug.Log(" llama InventoryMenu");
+    }
+    public void OnEditMenu()
+    {
+        MainMenu?.Invoke();
+        Debug.Log(" llama EditMenu");
+    }
     public void CreateObjects(GameObject obj)
     {
         if (currObject != null)

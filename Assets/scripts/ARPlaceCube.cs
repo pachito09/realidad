@@ -1,3 +1,5 @@
+using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,7 +35,7 @@ public class ARPlaceCube : MonoBehaviour
         aRRaycastManager.Raycast(touchPosition, rayHits, TrackableType.AllTypes);
         if (rayHits.Count > 0)
         {
-            StartCoroutine(WaitPlace());
+            //StartCoroutine(WaitPlace());
             Vector3 spawnPosition = rayHits[0].pose.position;
             Quaternion spawnRotation = rayHits[0].pose.rotation;
             Instantiate(aRRaycastManager.raycastPrefab, spawnPosition, spawnRotation);
@@ -46,3 +48,4 @@ public class ARPlaceCube : MonoBehaviour
         isPlacing = false;
     }
 }
+    
