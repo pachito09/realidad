@@ -1,8 +1,7 @@
-using JetBrains.Annotations;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
@@ -15,16 +14,23 @@ public class ARPlaceCube : MonoBehaviour
 
     private void Update()
     {
-        var touchscreen = Touchscreen.current;
-
-        if (touchscreen.touches[0].isInProgress && !isPlacing)
+        if (GameManager.Instance.appStay == AppStates.InInventoryMenu)
         {
-
-            var touch0 = touchscreen.touches[0];
-            if (touch0.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
+            if (EventSystem.current.IsPointerOverGameObject())
             {
-                Vector2 touchPos = touch0.position.ReadValue();
-                PlaceObject(touchPos);
+                Debug.Log("toco el ui");
+                return;
+            }
+            var touchscreen = Touchscreen.current;
+            if (touchscreen.touches[0].isInProgress && !isPlacing)
+            {
+
+                var touch0 = touchscreen.touches[0];
+                if (touch0.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
+                {
+                    Vector2 touchPos = touch0.position.ReadValue();
+                    PlaceObject(touchPos);
+                }
             }
         }
     }
@@ -33,15 +39,15 @@ public class ARPlaceCube : MonoBehaviour
         var rayHits = new List<ARRaycastHit>();
 
         aRRaycastManager.Raycast(touchPosition, rayHits, TrackableType.AllTypes);
-        if (rayHits.Count > 0)
+        if (rayHits.Count > 0) //&& GameManager.Instance)
         {
-            //StartCoroutine(WaitPlace());
+            StartCoroutine(WaitPlace());
             Vector3 spawnPosition = rayHits[0].pose.position;
             Quaternion spawnRotation = rayHits[0].pose.rotation;
             Instantiate(aRRaycastManager.raycastPrefab, spawnPosition, spawnRotation);
         }
     }
-    IEnumerable WaitPlace()
+    IEnumerator WaitPlace()
     {
         isPlacing = true;
         yield return new WaitForSecondsRealtime(1f);

@@ -1,20 +1,21 @@
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 using System;
+
+public enum AppStates { Default, InMainMenu, InInventoryMenu, InEditMenu }
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private GameObject currObject = null;
 
+    public AppStates appStay = AppStates.Default;
+
     public static event Action MainMenu;
     public static event Action InventoryMenu;
     public static event Action EditMenu;
 
-    private void Start()
+    private void Awake()
     {
-        OnMainMenu();
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -26,19 +27,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        OnMainMenu();
+    }
+
     public void OnMainMenu()
     {
         MainMenu?.Invoke();
+        appStay = AppStates.InMainMenu;
         Debug.Log(" llama MainMenu");
     }
     public void OnInventory()
     {
-        MainMenu?.Invoke();
+        InventoryMenu?.Invoke();
+        appStay = AppStates.InInventoryMenu;
         Debug.Log(" llama InventoryMenu");
     }
     public void OnEditMenu()
     {
-        MainMenu?.Invoke();
+        EditMenu?.Invoke();
+        appStay = AppStates.InEditMenu;
         Debug.Log(" llama EditMenu");
     }
     public void CreateObjects(GameObject obj)

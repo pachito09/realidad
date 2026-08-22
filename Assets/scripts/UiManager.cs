@@ -8,15 +8,15 @@ public class UiManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnMainMenu += OnMainMenuPanel;
-        GameManager.OnInventory += OnInventoryPanel;
-        GameManager.OnEditMenu += OnEditPanel;
+        GameManager.MainMenu += OnMainMenuPanel;
+        GameManager.InventoryMenu += OnInventoryPanel;
+        GameManager.EditMenu += OnEditPanel;
     }
     private void OnDisable()
     {
-        GameManager.OnMainMenu -= OnMainMenuPanel;
-        GameManager.OnInventory -= OnInventoryPanel;
-        GameManager.OnEditMenu -= OnEditPanel;
+        GameManager.MainMenu -= OnMainMenuPanel;
+        GameManager.InventoryMenu -= OnInventoryPanel;
+        GameManager.EditMenu -= OnEditPanel;
 
     }
     public void OnMainMenuPanel()

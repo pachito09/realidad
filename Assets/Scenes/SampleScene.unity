@@ -310,8 +310,9 @@ GameObject:
   - component: {fileID: 111142924}
   - component: {fileID: 111142926}
   - component: {fileID: 111142925}
+  - component: {fileID: 111142927}
   m_Layer: 5
-  m_Name: ExitInventoryPanel
+  m_Name: InventoryPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,6 +377,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111142923}
   m_CullTransparentMesh: 1
+--- !u!114 &111142927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 111142923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a1fc616c3a14ad4194f43dc2ee0f101, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryHandle
+  itemsList:
+  - {fileID: 11400000, guid: 1c7ed8168dd40fb44a20ce18751933bf, type: 2}
+  - {fileID: 11400000, guid: 7b7661a051df02b4d92fea7d04de77ac, type: 2}
+  - {fileID: 11400000, guid: a01db8207adb76c4db13ccf9e02168d0, type: 2}
+  cardPrefab: {fileID: 390771173166991324, guid: b856680f4f120584391c2870ca5a0cc3, type: 3}
+  spawnCard: {fileID: 597073698}
 --- !u!1 &332058369
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +408,7 @@ GameObject:
   - component: {fileID: 332058372}
   - component: {fileID: 332058371}
   - component: {fileID: 332058370}
+  - component: {fileID: 332058375}
   m_Layer: 0
   m_Name: XR Origin (Mobile AR)
   m_TagString: Untagged
@@ -475,6 +495,19 @@ Transform:
   - {fileID: 1521945770}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &332058375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 332058369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9a00ea9f99e45448abb97ad9d2b0dab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ARPlaceCube
+  aRRaycastManager: {fileID: 332058370}
 --- !u!1 &378087742
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,7 +589,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 378087745}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1247854519}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &378087745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,7 +1224,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1037860622}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1247854519}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: OnInventory
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1037860622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,7 +1413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eebdc1e8c303e1a46b71b6ea6356f6d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4892e313e4281c94a9ee2a5c30623ef8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1538,6 +1595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7bc12c34519c841b900d7f9b7cd5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  appStay: 0
 --- !u!1 &1276781788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,9 +1714,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a491eba9f4579ca4d8d6447b5a7f658c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UiManager
-  mainMenu: {fileID: 0}
-  InventoryMenu: {fileID: 0}
-  EditPanel: {fileID: 0}
+  mainMenu: {fileID: 1867056721}
+  InventoryMenu: {fileID: 111142923}
+  EditPanel: {fileID: 1499183287}
 --- !u!1 &1277787193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,12 +2595,12 @@ GameObject:
   - component: {fileID: 1867056724}
   - component: {fileID: 1867056723}
   m_Layer: 5
-  m_Name: 'inventoryPanel '
+  m_Name: MainMenuPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1867056722
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2737,7 +2795,7 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 109044065}
   - {fileID: 332058374}
+  - {fileID: 1247854518}
   - {fileID: 912126015}
   - {fileID: 1276781792}
   - {fileID: 1516476490}
-  - {fileID: 1247854518}
