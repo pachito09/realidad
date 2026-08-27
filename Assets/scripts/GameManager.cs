@@ -6,7 +6,8 @@ public enum AppStates { Default, InMainMenu, InInventoryMenu, InEditMenu }
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    private GameObject currObject = null;
+    public GameObject currObject = null;
+    public GameObject selectObj;
 
     public AppStates appStay = AppStates.Default;
 
@@ -58,7 +59,10 @@ public class GameManager : MonoBehaviour
         }
         currObject = Instantiate(obj, Vector3.zero, Quaternion.identity);
     }
-
+    public void DestroyObj()
+    {
+        Destroy(currObject);
+    }
     public void DestroyObject(GameObject obj)
     {
         Destroy(obj);

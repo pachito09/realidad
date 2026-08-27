@@ -15,10 +15,9 @@ public class ItemHandle : MonoBehaviour
     {
         button = GetComponent<Button>();
     }
-
-    void Start()
+    public void Start()
     {
-        button.onClick.AddListener(() => CreateObject());
+        button.onClick.AddListener(() => CreateObj());
     }
     public void LoadData()
     {
@@ -26,8 +25,8 @@ public class ItemHandle : MonoBehaviour
         itemDescriptionText.text = scripTableObject.itemDescripcion;
         itemNameText.text = scripTableObject.itemName;
     }
-    private void CreateObject()
+    public void CreateObj()
     {
-        GameManager.Instance.CreateObjects(scripTableObject.modelo);
+        //GameManager.Instance.CreateObjects(ItemScritable.modelo);
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce830e04a8d2695459cde135d2c1ad03, type: 3}
-  m_Name: 3
+  m_Name: cubito
   m_EditorClassIdentifier: Assembly-CSharp::ItemScritable
-  itemName: NoName
-  itemDescripcion: 
-  itemIcono: {fileID: 0}
-  modelo: {fileID: 0}
+  itemName: cubito
+  itemDescripcion: Un cubito
+  itemIcono: {fileID: 21300000, guid: bdbef374a08acaa4ebd18611d5d835e6, type: 3}
+  modelo: {fileID: 8459590506551166205, guid: 4b7f483a8a89e4e4db9940ad3cf87f33, type: 3}

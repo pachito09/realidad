@@ -24,7 +24,6 @@ public class ARPlaceCube : MonoBehaviour
             var touchscreen = Touchscreen.current;
             if (touchscreen.touches[0].isInProgress && !isPlacing)
             {
-
                 var touch0 = touchscreen.touches[0];
                 if (touch0.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
                 {
@@ -39,7 +38,7 @@ public class ARPlaceCube : MonoBehaviour
         var rayHits = new List<ARRaycastHit>();
 
         aRRaycastManager.Raycast(touchPosition, rayHits, TrackableType.AllTypes);
-        if (rayHits.Count > 0) //&& GameManager.Instance)
+        if (rayHits.Count > 0 && GameManager.Instance.currObject)
         {
             StartCoroutine(WaitPlace());
             Vector3 spawnPosition = rayHits[0].pose.position;

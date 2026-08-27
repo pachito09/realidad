@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e99168cfdf2bea74c965d561f0a3a74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::itemHandle
-  scripTableObject: {fileID: 11400000, guid: 1c7ed8168dd40fb44a20ce18751933bf, type: 2}
+  scripTableObject: {fileID: 0}
   previewItemImage: {fileID: 936089244068559710}
   itemNameText: {fileID: 3492940730009216710}
   itemDescriptionText: {fileID: 3251515603394148447}
