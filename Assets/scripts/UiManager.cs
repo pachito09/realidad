@@ -8,15 +8,17 @@ public class UiManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.MainMenu += OnMainMenuPanel;
-        GameManager.InventoryMenu += OnInventoryPanel;
-        GameManager.EditMenu += OnEditPanel;
+        GameManager.OnMainMenu += OnMainMenuPanel;
+        GameManager.OnInventoryMenu += OnInventoryPanel;
+        GameManager.OnEditMenu += OnEditPanel;
+        GameManager.OnEditMenu += OnTakeScreenShot;
     }
     private void OnDisable()
     {
-        GameManager.MainMenu -= OnMainMenuPanel;
-        GameManager.InventoryMenu -= OnInventoryPanel;
-        GameManager.EditMenu -= OnEditPanel;
+        GameManager.OnMainMenu -= OnMainMenuPanel;
+        GameManager.OnInventoryMenu -= OnInventoryPanel;
+        GameManager.OnEditMenu -= OnEditPanel;
+        GameManager.OnEditMenu -= OnTakeScreenShot;
 
     }
     public void OnMainMenuPanel()
@@ -34,6 +36,12 @@ public class UiManager : MonoBehaviour
     public void OnEditPanel()
     {
         EditPanel.SetActive(true);
+        mainMenu.SetActive(false);
+        InventoryMenu.SetActive(false);
+    }
+    public void OnTakeScreenShot()
+    {
+        EditPanel.SetActive(false);
         mainMenu.SetActive(false);
         InventoryMenu.SetActive(false);
     }

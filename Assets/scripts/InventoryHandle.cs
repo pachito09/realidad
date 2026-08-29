@@ -1,18 +1,17 @@
-using UnityEngine;
-using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEngine.XR.Interaction.Toolkit.Inputs;
-using Unity.VisualScripting;
+using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
-public class InventoryHandle : MonoBehaviour
+public class inventoryHandle : MonoBehaviour
 {
-    public List<ItemScritable> itemsList = new List<ItemScritable>();
-
+    [SerializeField] private List<ItemScritable> itemsList = new List<ItemScritable>();
     [SerializeField] private GameObject cardPrefab;
-    [SerializeField] private Transform spawnCard;
+    [SerializeField] private Transform spawnCards;
 
-    void Start()
+    private void Start()
     {
         LoadCards();
     }
@@ -22,16 +21,16 @@ public class InventoryHandle : MonoBehaviour
         if (itemsList.Count != 0)
         {
             GameObject cardTemp = null;
-            foreach (ItemScritable scriptable in itemsList)
+            foreach (ItemScritable scripTable in itemsList)
             {
-                cardTemp = Instantiate(cardPrefab, spawnCard);
-                cardTemp.GetComponent<ItemHandle>().scripTableObject = scriptable;
-                cardTemp.GetComponent<ItemHandle>().LoadData();
+                cardTemp = Instantiate(cardPrefab, spawnCards);
+                cardTemp.GetComponent<itemHandle>().scriptableObj = scripTable;
+                cardTemp.GetComponent<itemHandle>().LoadData();
             }
         }
         else
         {
-            Debug.LogWarning("El listado de items está vacío");
+            Debug.LogWarning("El listado de items esta vacio");
         }
     }
 }

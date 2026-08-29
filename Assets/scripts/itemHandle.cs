@@ -1,32 +1,38 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class ItemHandle : MonoBehaviour
+public class itemHandle : MonoBehaviour
 {
-    public ItemScritable scripTableObject;
-
+    public ItemScritable scriptableObj;
     [SerializeField] private Image previewItemImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     private Button button;
 
-    private void Awake()
+    void Awake()
     {
         button = GetComponent<Button>();
     }
-    public void Start()
+    void Start()
     {
-        button.onClick.AddListener(() => CreateObj());
+        button.onClick.AddListener(() => SelectItem());
+        //button.onClick.AddListener(() => GameManager.Instance.EditMenu());
     }
+
     public void LoadData()
     {
-        previewItemImage.sprite = scripTableObject.itemIcono;
-        itemDescriptionText.text = scripTableObject.itemDescripcion;
-        itemNameText.text = scripTableObject.itemName;
+        previewItemImage.sprite = scriptableObj.itemIcono;
+        itemNameText.text = scriptableObj.itemName;
+        itemDescriptionText.text = scriptableObj.itemDescripcion;
     }
-    public void CreateObj()
+
+    private void CreateObject()
     {
-        //GameManager.Instance.CreateObjects(ItemScritable.modelo);
+        GameManager.Instance.CreateObject(scriptableObj.modelo);
+    }
+    void SelectItem()
+    {
+        GameManager.Instance.selectedObject = scriptableObj.modelo;
     }
 }

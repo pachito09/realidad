@@ -200,7 +200,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6188174}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1247854517}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &6188174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,7 +406,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b7661a051df02b4d92fea7d04de77ac, type: 2}
   - {fileID: 11400000, guid: a01db8207adb76c4db13ccf9e02168d0, type: 2}
   cardPrefab: {fileID: 390771173166991324, guid: b856680f4f120584391c2870ca5a0cc3, type: 3}
-  spawnCard: {fileID: 597073698}
+  spawnCards: {fileID: 597073698}
 --- !u!1 &332058369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1434,7 +1446,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1083194039}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1247854519}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1083194039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1554,7 +1578,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1242236835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1867056725}
+        m_TargetAssemblyTypeName: TakeScreanshotAndShare, Assembly-CSharp
+        m_MethodName: takeScreenshoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1242236835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,9 +1673,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7bc12c34519c841b900d7f9b7cd5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  planeManager: {fileID: 0}
   currObject: {fileID: 0}
-  selectObj: {fileID: 0}
-  appStay: 0
+  selectedObject: {fileID: 0}
+  appStates: 0
 --- !u!1 &1276781788
 GameObject:
   m_ObjectHideFlags: 0
@@ -2664,6 +2701,7 @@ GameObject:
   - component: {fileID: 1867056722}
   - component: {fileID: 1867056724}
   - component: {fileID: 1867056723}
+  - component: {fileID: 1867056725}
   m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
@@ -2731,6 +2769,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867056721}
   m_CullTransparentMesh: 1
+--- !u!114 &1867056725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867056721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06339da20e04db0428afb10f0bfa8eb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TakeScreanshotAndShare
+  panelMenu: {fileID: 1867056721}
 --- !u!1 &1930939116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,63 +2908,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041640511}
   m_CullTransparentMesh: 1
---- !u!1001 &820092781983146123
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 540
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1170
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 342644156252244704, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2671975768524299957, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
-      propertyPath: m_Name
-      value: Sphere
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 21507241cda049b4e90ee5f1e7270567, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2926,4 +2920,3 @@ SceneRoots:
   - {fileID: 912126015}
   - {fileID: 1276781792}
   - {fileID: 1516476490}
-  - {fileID: 820092781983146123}
