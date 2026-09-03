@@ -1,28 +1,21 @@
-using System;
+using JetBrains.Annotations;
 using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 
-public class TakeScreanshotAndShare : MonoBehaviour
+public class TakeScreenshotAndShare : MonoBehaviour
 {
-    [SerializeField] private GameObject panelMenu;
-
-    public void takeScreenshoot()
+    public void TakeScreenshot()
     {
-        if (panelMenu != null)
-        {
-            panelMenu.SetActive(false);
-            StartCoroutine(Screenshot());
-            panelMenu.SetActive(true);
-        }
+        StartCoroutine(Screenshot());
     }
     private IEnumerator Screenshot()
     {
+        GameManager.Instance.TakeScreenshot();
+
         yield return new WaitForEndOfFrame();
 
-        GameManager.Instance.TakeScreenShot();
 
         Texture2D ss = new Texture2D(Screen.width, Screen.height, TextureFormat.RGB24, false);
         ss.ReadPixels(new Rect(0, 0, Screen.width, Screen.height), 0, 0);
@@ -35,7 +28,7 @@ public class TakeScreanshotAndShare : MonoBehaviour
         Destroy(ss);
 
         new NativeShare().AddFile(filePath)
-            .SetSubject("Subject goes here").SetText("Estoy probando mi AR")
+            .SetSubject("Subject goes here").SetText("Hola esto probando mi AR")
             .SetCallback((result, shareTarget) => Debug.Log("Share result: " + result + ", selected app: " + shareTarget))
             .Share();
 

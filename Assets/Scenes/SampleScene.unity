@@ -201,13 +201,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1247854517}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 1247854519}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -604,7 +604,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1247854519}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnMainMenu
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1281,7 +1281,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1247854519}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnInventory
+        m_MethodName: InventoryMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1579,9 +1579,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1867056725}
-        m_TargetAssemblyTypeName: TakeScreanshotAndShare, Assembly-CSharp
-        m_MethodName: takeScreenshoot
+      - m_Target: {fileID: 1247854519}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ShareScreenshot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7bc12c34519c841b900d7f9b7cd5f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  planeManager: {fileID: 0}
+  planeManager: {fileID: 332058371}
   currObject: {fileID: 0}
   selectedObject: {fileID: 0}
   appStates: 0
@@ -1795,9 +1795,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a491eba9f4579ca4d8d6447b5a7f658c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UiManager
-  mainMenu: {fileID: 1867056721}
-  InventoryMenu: {fileID: 111142923}
-  EditPanel: {fileID: 1499183287}
+  mainMenuPanel: {fileID: 1867056721}
+  inventoryPanel: {fileID: 111142923}
+  editMenuPanel: {fileID: 1499183287}
 --- !u!1 &1277787193
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,7 +2781,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06339da20e04db0428afb10f0bfa8eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TakeScreanshotAndShare
-  panelMenu: {fileID: 1867056721}
 --- !u!1 &1930939116
 GameObject:
   m_ObjectHideFlags: 0

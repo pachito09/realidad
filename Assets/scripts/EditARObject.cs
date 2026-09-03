@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -10,7 +9,6 @@ using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 public class EditARObject : MonoBehaviour
 {
     [SerializeField] private ARRaycastManager aRRaycastManager;
-
     private void OnEnable()
     {
         EnhancedTouchSupport.Enable();
@@ -19,20 +17,21 @@ public class EditARObject : MonoBehaviour
     {
         EnhancedTouchSupport.Disable();
     }
-    public void Update()
+    private void Update()
     {
-        if (Touch.activeTouches.Count == 1)
+        if (Touch.activeTouches.Count > 0)
         {
-
-            if (Touch.activeTouches.Count > 0)
+            if (EventSystem.current.IsPointerOverGameObject())
             {
-                if (EventSystem.current.IsPointerOverGameObject())
-                {
-                    return;
-                }
+                Debug.Log("Toco en la UI");
+                return;
+            }
+            if (Touch.activeTouches.Count == 1)
+            {
+
                 Touch touch = Touch.activeTouches[0];
 
-                if (touch.phase == TouchPhase.Began)
+                if (touch.phase == TouchPhase.Moved)
                 {
                     List<ARRaycastHit> hits = new List<ARRaycastHit>();
                     if (aRRaycastManager.Raycast(touch.screenPosition, hits, UnityEngine.XR.ARSubsystems.TrackableType.PlaneWithinPolygon))
@@ -41,22 +40,22 @@ public class EditARObject : MonoBehaviour
                         GameManager.Instance.currObject.transform.position = pose.position;
                     }
                 }
-            }
-        }
-        else if (Touch.activeTouches.Count == 2)
-        {
-            Touch touchZero = Touch.activeTouches[0];
-            Touch touchOne = Touch.activeTouches[1];
-            if (touchZero.phase == TouchPhase.Moved || touchOne.phase == TouchPhase.Moved)
-            {
-                Vector2 touchZeroPrevPosition = touchZero.screenPosition - touchZero.delta;
-                Vector2 touchOnePrevPosition = touchOne.screenPosition - touchOne.delta;
+                else if (Touch.activeTouches.Count == 2)
+                {
+                    Touch touchZero = Touch.activeTouches[0];
+                    Touch touchOne = Touch.activeTouches[1];
+                    if (touchZero.phase == TouchPhase.Moved || touchOne.phase == TouchPhase.Moved)
+                    {
+                        Vector2 touchZeroPrevPosition = touchZero.screenPosition - touchZero.delta;
+                        Vector2 touchOnePrevPosition = touchOne.screenPosition - touchOne.delta;
 
-                float prevAngle = Mathf.Atan2(touchOnePrevPosition.y - touchOnePrevPosition.y, touchOnePrevPosition.x - touchOnePrevPosition.x);
-                float currAngle = Mathf.Atan2(touchZero.screenPosition.y - touchOne.screenPosition.y, touchZero.screenPosition.x - touchOne.screenPosition.x);
+                        float prevAngle = Mathf.Atan2(touchZeroPrevPosition.x - touchZeroPrevPosition.y, touchOnePrevPosition.x - touchOnePrevPosition.y);
+                        float currAngle = Mathf.Atan2(touchZero.screenPosition.y - touchOne.screenPosition.y, touchZero.screenPosition.x - touchOne.screenPosition.x);
+                        float deltaAngle = Mathf.DeltaAngle(prevAngle, currAngle);
 
-                float deltaAngle = Mathf.DeltaAngle(prevAngle, currAngle);
-                GameManager.Instance.currObject.transform.Rotate(Vector3.up, deltaAngle, Space.World); 
+                        GameManager.Instance.currObject.transform.Rotate(Vector3.up, deltaAngle, Space.World);
+                    }
+                }
             }
         }
     }

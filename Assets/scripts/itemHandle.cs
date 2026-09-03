@@ -16,7 +16,7 @@ public class itemHandle : MonoBehaviour
     }
     void Start()
     {
-        button.onClick.AddListener(() => SelectItem());
+        button.onClick.AddListener(() => SelectItem());  
         //button.onClick.AddListener(() => GameManager.Instance.EditMenu());
     }
 

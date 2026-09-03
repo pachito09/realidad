@@ -1,48 +1,53 @@
 using UnityEngine;
+using System;
 
-public class UiManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject mainMenu;
-    [SerializeField] private GameObject InventoryMenu;
-    [SerializeField] private GameObject EditPanel;
+    [SerializeField] private GameObject mainMenuPanel;
+    [SerializeField] private GameObject inventoryPanel;
+    [SerializeField] private GameObject editMenuPanel;
+
+    // private GameObject currObject = null;
+    private GameObject selectedObj;
+    public GameObject Selected { get => selectedObj; set => selectedObj = value; }
 
     private void OnEnable()
     {
         GameManager.OnMainMenu += OnMainMenuPanel;
         GameManager.OnInventoryMenu += OnInventoryPanel;
-        GameManager.OnEditMenu += OnEditPanel;
-        GameManager.OnEditMenu += OnTakeScreenShot;
+        GameManager.OnEditMenu += OnEditMenuPanel;
+        GameManager.OnTakeScreenshot += OnTakeScreenshot;
     }
     private void OnDisable()
     {
         GameManager.OnMainMenu -= OnMainMenuPanel;
         GameManager.OnInventoryMenu -= OnInventoryPanel;
-        GameManager.OnEditMenu -= OnEditPanel;
-        GameManager.OnEditMenu -= OnTakeScreenShot;
-
+        GameManager.OnEditMenu -= OnEditMenuPanel;
+        GameManager.OnTakeScreenshot -= OnTakeScreenshot;
     }
+
     public void OnMainMenuPanel()
     {
-        mainMenu.SetActive(true);
-        InventoryMenu.SetActive(false);
-        EditPanel.SetActive(false);
+        mainMenuPanel.SetActive(true);
+        inventoryPanel.SetActive(false);
+        editMenuPanel.SetActive(false);
     }
     public void OnInventoryPanel()
     {
-        InventoryMenu.SetActive(true);
-        mainMenu.SetActive(false);
-        EditPanel.SetActive(false);
+        mainMenuPanel.SetActive(false);
+        inventoryPanel.SetActive(true);
+        editMenuPanel.SetActive(false);
     }
-    public void OnEditPanel()
+    public void OnEditMenuPanel()
     {
-        EditPanel.SetActive(true);
-        mainMenu.SetActive(false);
-        InventoryMenu.SetActive(false);
+        mainMenuPanel.SetActive(false);
+        inventoryPanel.SetActive(false);
+        editMenuPanel.SetActive(true);
     }
-    public void OnTakeScreenShot()
+    public void OnTakeScreenshot()
     {
-        EditPanel.SetActive(false);
-        mainMenu.SetActive(false);
-        InventoryMenu.SetActive(false);
+        mainMenuPanel.SetActive(false);
+        inventoryPanel.SetActive(false);
+        editMenuPanel.SetActive(false);
     }
 }
