@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     }
     public void EndTakeScreenshot()
     {
-        OnEndTakeScreenshot?.Invoke();
+        OnTakeScreenshot?.Invoke();
         MainMenu();
         ShowPlanes();
     }

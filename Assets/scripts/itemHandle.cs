@@ -4,7 +4,7 @@ using TMPro;
 
 public class itemHandle : MonoBehaviour
 {
-    public ItemScriptable scriptableObj;
+    public ItemScritable scriptableObj;
     [SerializeField] private Image previewItemImage;
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
@@ -22,17 +22,17 @@ public class itemHandle : MonoBehaviour
 
     public void LoadData()
     {
-        previewItemImage.sprite = scriptableObj.itemPreview;
+        previewItemImage.sprite = scriptableObj.itemIcono;
         itemNameText.text = scriptableObj.itemName;
-        itemDescriptionText.text = scriptableObj.itemDescription;
+        itemDescriptionText.text = scriptableObj.itemDescripcion;
     }
 
     private void CreateObject()
     {
-        GameManager.Instance.CreateObject(scriptableObj.itemObj);
+        GameManager.Instance.CreateObject(scriptableObj.modelo);
     }
     void SelectItem()
     {
-        GameManager.Instance.selectedObject = scriptableObj.itemObj;
+        GameManager.Instance.selectedObject = scriptableObj.modelo;
     }
 }

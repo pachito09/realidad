@@ -7,7 +7,7 @@ using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class inventoryHandle : MonoBehaviour
 {
-    [SerializeField] private List<ItemScriptable> itemsList = new List<ItemScriptable>();
+    [SerializeField] private List<ItemScritable> itemsList = new List<ItemScritable>();
     [SerializeField] private GameObject cardPrefab;
     [SerializeField] private Transform spawnCards;
 
@@ -21,7 +21,7 @@ public class inventoryHandle : MonoBehaviour
         if (itemsList.Count != 0)
         {
             GameObject cardTemp = null;
-            foreach (ItemScriptable scripTable in itemsList)
+            foreach (ItemScritable scripTable in itemsList)
             {
                 cardTemp = Instantiate(cardPrefab, spawnCards);
                 cardTemp.GetComponent<itemHandle>().scriptableObj = scripTable;

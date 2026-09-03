@@ -26,6 +26,7 @@ public class ARPlaceCube : MonoBehaviour
 
             if (touchscreen.touches[0].isInProgress && !isPlacing)
             {
+
                 var touch0 = touchscreen.touches[0];
                 if (touch0.phase.ReadValue() == UnityEngine.InputSystem.TouchPhase.Began)
                 {
