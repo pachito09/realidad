@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Steve
   m_EditorClassIdentifier: Assembly-CSharp::cosita
   itemName: Steve
-  itemDescripcion: 'Un sujeto de un mundo cuadrado enorme '
-  itemIcono: {fileID: 21300000, guid: cb942ec53fdb82a4da772e9db1882673, type: 3}
-  modelo: {fileID: 7684488456062865651, guid: 866b1bfbe40180341a976344067dca5d, type: 3}
+  itemDescription: un pelao cuadrao
+  itemPreview: {fileID: 21300000, guid: cb942ec53fdb82a4da772e9db1882673, type: 3}
+  itemObj: {fileID: 7684488456062865651, guid: 866b1bfbe40180341a976344067dca5d, type: 3}
